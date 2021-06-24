@@ -61,11 +61,15 @@ var $CLAN_MODTYPES = array(
 	'alphaflagspickedup'	=> '+',
 );
 
-function PS_soldat(&$db) {
+function __construct(&$db) {
 	parent::PS($db);
 	$this->CLAN_MAP_MODTYPES = $this->CLAN_MODTYPES;
 //	$this->soldat_remove_columns = array('headshotkills','headshotkillspct','accuracy','shotsperkill','damage');
 	$this->soldat_remove_columns = array();
+}
+
+function PS_soldat(&$db) {
+    self::__construct($db);
 }
 
 function add_map_player_list_mod($map, $setup = array()) {
